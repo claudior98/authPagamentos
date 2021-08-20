@@ -1,11 +1,14 @@
-const query = require('../models/querys')
+const query = require('../models/tables/**')
 const connect = require('../models/connect')
 const express = require ('express')
 
-class Credor { 
+class Credor{ 
     createCredor = () => {
-        const { id } = {id: req.body}         
+        let id = {id: req.body}
+        if(id){
+            console.log("teste")
+        }   
 
-}   
-
+    }   
+}
 module.exports = new Credor()
