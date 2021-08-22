@@ -1,7 +1,7 @@
 const query = require('../models/query')
 const Express = require('express')
-class Pagamento {
-    criarPagamento = async (req, res) => {
+class Devedor {
+    criarDevedores = async (req, res) => {
         /*let id = {id: req.body.idCredor}
 
         if(id){
@@ -9,7 +9,7 @@ class Pagamento {
         } */
         try {
             const values = req.body
-            const sql = 'INSERT INTO Pagamento SET ?'
+            const sql = 'INSERT INTO Devedor SET ?'
 
             await query(sql, values);
             return res.json(values)
@@ -18,10 +18,11 @@ class Pagamento {
             return res.json({message: err})
         }
     }
-    listarPagamento = async (req,res) => {
-        const sql = 'SELECT * FROM Pagamento;'
+    listarDevedores = async (req,res) => {
+        const sql = 'SELECT * FROM Devedor;'
         return res.send(await query(sql))
     }
 
+
 }
-module.exports = new Pagamento()
+module.exports = new Devedor()

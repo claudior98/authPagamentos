@@ -1,9 +1,21 @@
-const express = require("express")
-const { Router } = require('express')
-const Pagamentos = require('./controllers/pagamento')
+const Router = require('express').Router
+const Express = require("express")
+//const Pagamentos = require('./controllers/pagamento')
+const Credor = require('./controllers/credor')
+const Devedor = require('./controllers/devedor')
+const Pagamento = require('./controllers/pagamento')
 
 const routes = Router()
 
-routes.post("/cadastrar",Pagamentos.cadastrarPag)
+//routes.post("/criarPagamento", Pagamentos.cadastrarPag)
 
-module.exports = Router
+routes.post("/criarCredor", Credor.criarCredor)
+routes.get("/listarCredor", Credor.listarCredores)
+
+routes.post("/criarDevedor", Devedor.criarDevedores)
+routes.get("/listarDevedor", Devedor.listarDevedores)
+
+routes.post("/criarPagamento", Pagamento.criarPagamento)
+routes.get("/listarPagamento", Pagamento.listarPagamento)
+
+module.exports = routes

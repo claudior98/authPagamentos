@@ -1,7 +1,7 @@
-const mysql = require('mysql')
+const mysql = require('mysql2')
+var Tabelas = require('./tabelas')
 
-const conexao = mysql.createConnection({
-    type: "mysql",
+const con = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
@@ -9,6 +9,22 @@ const conexao = mysql.createConnection({
     database: 'Banco'
 })
 
-module.exports = conexao
+con.connect(function (err) {
+    if (err) {
+        throw err;
+    }
+    console.log("Connected!")
+
+    con.query("CREATE DATABASE IF NOT EXISTS Banco", function (err, result) {
+        if (err) {
+            throw err
+        }
+        console.log("Database created")
+    })
+
+    Tabelas.init(con)
 
 
+})
+
+module.exports = con
