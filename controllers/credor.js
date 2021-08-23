@@ -22,7 +22,5 @@ class Credor {
         const sql = 'SELECT * FROM Credor;'
         return res.send(await query(sql))
     }
-
-
 }
 module.exports = new Credor()

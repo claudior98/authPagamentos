@@ -1,9 +1,8 @@
 const Router = require('express').Router
-const Express = require("express")
-//const Pagamentos = require('./controllers/pagamento')
 const Credor = require('./controllers/credor')
 const Devedor = require('./controllers/devedor')
 const Pagamento = require('./controllers/pagamento')
+
 
 const routes = Router()
 

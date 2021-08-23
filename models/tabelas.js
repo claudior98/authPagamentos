@@ -8,7 +8,7 @@ class tableCredor {
     }
     createCredor() {
         try {
-            const sql = 'CREATE TABLE IF NOT EXISTS Credor(identificador varchar(200) NOT NULL, nome varchar(200), cpf varchar(20), status varchar(20), PRIMARY KEY(identificador))ENGINE=INNODB;'
+            const sql = 'CREATE TABLE IF NOT EXISTS Credor(id varchar(200) NOT NULL, nome varchar(200), cpf varchar(20), status varchar(20) , PRIMARY KEY(id));'
             this.connect.query(sql, function (err) {
                 if (err) {
                     throw err
@@ -22,7 +22,7 @@ class tableCredor {
     }
     createDevedor() {
         try {
-            const sql = 'CREATE TABLE IF NOT EXISTS Devedor(identificador varchar(200) NOT NULL, nome varchar(200), cnpj varchar(20), PRIMARY KEY(identificador))ENGINE=INNODB;'
+            const sql = 'CREATE TABLE IF NOT EXISTS Devedor(id varchar(200) NOT NULL, nome varchar(200), cnpj varchar(20), PRIMARY KEY(id));'
 
             this.connect.query(sql, function (err) {
                 if (err) {
@@ -37,8 +37,8 @@ class tableCredor {
     }
     createPagamento() {
         try {
-            const sql = 'CREATE TABLE IF NOT EXISTS Pagamento(identificador varchar(200) NOT NULL, Idcredor varchar(200), Iddevedor varchar(200) NOT NULL, valorinicial int, valorfinal int, data TIMESTAMP, status varchar(200), motivo varchar(200), PRIMARY KEY(identificador));'
-            this.connect.query(sql, function (err, result) {
+            const sql = 'CREATE TABLE IF NOT EXISTS Pagamento(id varchar(200) NOT NULL, Idcredor varchar(200), Iddevedor varchar(200) NOT NULL, valorinicial int, valorfinal int, data DATETIME, status varchar(200), motivo varchar(200), PRIMARY KEY(id));'
+            this.connect.query(sql, function (err) {
                 if (err) {
                     throw err
                 } else {

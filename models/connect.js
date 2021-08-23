@@ -22,9 +22,7 @@ con.connect(function (err) {
         console.log("Database created")
     })
 
-    Tabelas.init(con)
-
-
+    Tabelas.init(con) 
 })
 
 module.exports = con
