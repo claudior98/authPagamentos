@@ -2,11 +2,6 @@ const query = require('../models/query')
 const Express = require('express')
 class Credor {
     criarCredor = async (req, res) => {
-        /*let id = {id: req.body.idCredor}
-
-        if(id){
-            console.log("teste")
-        } */
         try {
             const values = req.body
             const sql = 'INSERT INTO Credor SET ?'

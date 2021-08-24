@@ -2,9 +2,9 @@ class tableCredor {
     init(connect) {
         this.connect = connect
 
-        this.createPagamento()
         this.createDevedor()
         this.createCredor()
+        this.createPagamento()
     }
     createCredor() {
         try {
@@ -37,7 +37,7 @@ class tableCredor {
     }
     createPagamento() {
         try {
-            const sql = 'CREATE TABLE IF NOT EXISTS Pagamento(id varchar(200) NOT NULL, Idcredor varchar(200), Iddevedor varchar(200) NOT NULL, valorinicial int, valorfinal int, data DATETIME, status varchar(200), motivo varchar(200), PRIMARY KEY(id));'
+            const sql = 'CREATE TABLE IF NOT EXISTS Pagamento(id varchar(200) NOT NULL, Idcredor varchar(200), Iddevedor varchar(200) NOT NULL, valorinicial int, valorfinal int, data DATETIME, status varchar(200), motivo varchar(200), PRIMARY KEY(id), CONSTRAINT FK_Credor FOREIGN KEY (Idcredor) REFERENCES Credor(id),CONSTRAINT FK_Devedor FOREIGN KEY (Iddevedor) REFERENCES Devedor(id));'
             this.connect.query(sql, function (err) {
                 if (err) {
                     throw err

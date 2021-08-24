@@ -6,7 +6,7 @@ const con = mysql.createConnection({
     port: 3306,
     user: 'root',
     password: 'claudinho98',
-    database: 'Banco'
+    database: 'banco'
 })
 
 con.connect(function (err) {
@@ -15,7 +15,7 @@ con.connect(function (err) {
     }
     console.log("Connected!")
 
-    con.query("CREATE DATABASE IF NOT EXISTS Banco", function (err, result) {
+    con.query("CREATE DATABASE IF NOT EXISTS banco", function (err, result) {
         if (err) {
             throw err
         }
