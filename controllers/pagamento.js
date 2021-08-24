@@ -34,7 +34,7 @@ class Pagamento {
 
             //Verifica se o pagamento feito ja foi cadastrado
             if(verIdPag[0] !== undefined){
-                return res.status(401).json({message: `${verIdPag[0].id} - Pagamento ja esta cadastrado}`})
+                return res.status(401).json({message: `${verIdPag[0].id} - Pagamento ja esta cadastrado`})
             }
             values.status = "aprovado"
             const sql = 'INSERT INTO Pagamento SET ?'
