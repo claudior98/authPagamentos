@@ -13,20 +13,26 @@ class Pagamento {
             const devedorExiste = await query(sqlDevExiste);
             values.status = "pendente"
 
+            //verifica se existe um devedor
             if(devedorExiste[0] === undefined){
                 return res.status(401).json({ message: `Devedor nao existe ou invalido, Pagamento ${values.status = "negado"}`})
             } 
+            //Verifica se Existe um credor cadastrado/ se existir verifica se esta aprovado
             if(status[0] === undefined){
                 return res.status(401).json({ message: `Credor nao existe ou invalido, Status ${values.status = "negado"}`})
             }else if(status[0].status !== "aprovado"){
                 return res.status(400).json({ message: `Pagamento recusado usuario nao aprovado, Status ${values.status = "negado"}`})
             }
-            if (await values.valorinicial < values.valorfinal) {
+            //Verifica se o valor inicial é maior que o final
+            if (values.valorinicial < values.valorfinal) {
                 return res.status(400).json({ message: `Valor final do pagamento maior que o inicial, Status ${values.status = "negado"}` })
             }
-            if (await values.valorinicial <= 0 | values.valorfinal <= 0) {
+            //Verifica se o valor inicial e o final sao maior do que 0
+            if (values.valorinicial <= 0 | values.valorfinal <= 0) {
                 return res.status(400).json({ message: `Valores a pagar menores do que 0, Status ${values.status = "negado"}` })
             }
+
+            //Verifica se o pagamento feito ja foi cadastrado
             if(verIdPag[0] !== undefined){
                 return res.status(401).json({message: `${verIdPag[0].id} - Pagamento ja esta cadastrado}`})
             }

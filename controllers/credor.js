@@ -4,8 +4,14 @@ class Credor {
     criarCredor = async (req, res) => {
         try {
             const values = req.body
-            const sql = 'INSERT INTO Credor SET ?'
+            const sqlCredor = `SELECT * FROM Credor WHERE id = "${values.id}"`;
+            const verCredor = await query(sqlCredor);
 
+            if(verCredor[0] !== undefined){
+                return res.status(401).json({ message: `O Credor ${verCredor[0].nome} ja esta cadastrado `})
+            }  
+            
+            const sql = 'INSERT INTO Credor SET ?'
             await query(sql, values);
             return res.json(values)
         }catch(err){

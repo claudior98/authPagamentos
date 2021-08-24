@@ -4,14 +4,15 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app",
+    "start": "nodemon /app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.12"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
